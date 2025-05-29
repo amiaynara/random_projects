@@ -3,14 +3,13 @@ from telethon.tl.types import InputMessagesFilterPhotos, InputMessagesFilterVide
 import os
 
 # Your Telegram API credentials (get them from https://my.telegram.org)
-api_id = <your_api_id>   # Replace with your API ID
-api_hash = ''  # Replace with your API hash
-phone_number = ''  # Your phone number with country code
+api_id = int(os.getenv('TELEGRAM_API_ID'))
+api_hash = os.getenv('TELEGRAM_API_HASH')
+phone_number = os.getenv('TELEGRAM_PHONE_NUMBER')
 # app title = 'media-downloader'
 
 
 # Channel/chat details
-channel_username = 'channel_username'  # Replace with target channel username
 limit = 100  # Number of recent messages to check
 
 # Create download directory if it doesn't exist
@@ -48,8 +47,8 @@ os.makedirs(download_dir, exist_ok=True)
 #     print("Download completed!")
 
 def main():
-    recipient = ''
-    channel_link = ''
+    recipient = 'viskskka'
+    channel_link = 't.me/viskskka'
     # entity = client.get_entity(channel_link)
     # username = entity.username
     # title = entity.title

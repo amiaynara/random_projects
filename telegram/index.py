@@ -4,7 +4,7 @@ import os
 from telethon.sync import TelegramClient
 from telethon.tl.types import DocumentAttributeVideo
 
-from regex_test import normalize_subject, get_subject_name
+from regex_test import normalize_subject, extract_subject_from_filename
 
 # Set up Telegram API credentials
 api_id = int(os.getenv('TELEGRAM_API_ID'))
@@ -47,7 +47,7 @@ async def download_media(message):
         if message.media is not None:
             if hasattr(message.media, 'photo') or hasattr(message.media, 'document') and isinstance(message.media.document.attributes[0], DocumentAttributeVideo) or hasattr(message.media, 'document') and message.media.document.mime_type.split("/")[0] == 'image' and message.media.document.mime_type.split("/")[1] == 'gif':
                 temp_file_name = message.media.document.attributes[1].file_name
-                subject = get_subject_name(temp_file_name)
+                subject = extract_subject_from_filename(temp_file_name)
                 normalized_subject = normalize_subject(subject)
                 output_file_path = os.path.join('telegram_media', normalized_subject, temp_file_name)
                 s3_key = f'telegram_media/{normalized_subject}/{temp_file_name}'
@@ -68,7 +68,7 @@ async def download_media(message):
 async def download_all_media():
     try:
         await client.start()
-        entity = await client.get_entity('viskskka')
+        entity = await client.get_entity('djdjdjrjfkfk')
         print("Starting download process...")
         
         async for message in client.iter_messages(entity):

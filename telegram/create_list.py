@@ -10,7 +10,7 @@ from regex_test import normalize_subject, extract_subject_from_filename
 api_id = int(os.getenv('TELEGRAM_API_ID'))
 api_hash = os.getenv('TELEGRAM_API_HASH')
 client = TelegramClient('session_name', api_id, api_hash)
-BUCKET_NAME = 'omicsreplica'
+BUCKET_NAME = 'upsc'
 
 def check_upload_status(s3_key):
     s3_client = boto3.client('s3')

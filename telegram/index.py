@@ -10,7 +10,7 @@ from regex_test import normalize_subject, extract_subject_from_filename
 api_id = int(os.getenv('TELEGRAM_API_ID'))
 api_hash = os.getenv('TELEGRAM_API_HASH')
 client = TelegramClient('session_name', api_id, api_hash)
-BUCKET_NAME = 'upsc'
+BUCKET_NAME = 'upsc-videos'
 
 def upload_to_s3(media, s3_key, temp_file):
     s3_client = boto3.client('s3')
@@ -32,7 +32,7 @@ def upload_to_s3(media, s3_key, temp_file):
 
 def check_upload_status(s3_key):
     s3_client = boto3.client('s3')
-    bucket_name = 'upsc'
+    BUCKET_NAME = 'upsc-videos'
     try:
         s3_client.head_object(Bucket=bucket_name, Key=s3_key)
         return 'UPLOADED'

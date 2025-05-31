@@ -32,9 +32,8 @@ def upload_to_s3(media, s3_key, temp_file):
 
 def check_upload_status(s3_key):
     s3_client = boto3.client('s3')
-    BUCKET_NAME = 'upsc-videos'
     try:
-        s3_client.head_object(Bucket=bucket_name, Key=s3_key)
+        s3_client.head_object(Bucket=BUCKET_NAME, Key=s3_key)
         return 'UPLOADED'
     except:
         return 'NOT_UPLOADED'
